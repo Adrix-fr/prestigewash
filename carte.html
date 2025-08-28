@@ -101,55 +101,14 @@
         
         @media (max-width: 768px) {
             .map-overlay {
-                top: 10px;
-                left: 10px;
-                right: 10px;
-                max-width: none;
-                padding: 15px;
-                border-radius: 10px;
-            }
-            
-            .back-button {
-                top: 10px;
-                right: 10px;
-                padding: 10px 16px;
-                font-size: 0.9rem;
-                border-radius: 20px;
-            }
-            
-            .map-overlay h2 {
-                font-size: 1.1rem;
-                margin-bottom: 10px;
-            }
-            
-            .map-overlay p {
-                font-size: 0.8rem;
-                margin-bottom: 8px;
-            }
-            
-            .zone-info {
-                padding: 12px;
-                margin-top: 12px;
-            }
-            
-            .zone-info h3 {
-                font-size: 1rem;
-                margin-bottom: 8px;
-            }
-            
-            .zone-info li {
-                font-size: 0.75rem;
-                margin-bottom: 4px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .map-overlay {
                 top: 5px;
                 left: 5px;
                 right: 5px;
-                padding: 12px;
+                max-width: none;
+                padding: 10px;
                 border-radius: 8px;
+                max-height: 60vh;
+                overflow-y: auto;
             }
             
             .back-button {
@@ -162,22 +121,22 @@
             
             .map-overlay h2 {
                 font-size: 1rem;
-                margin-bottom: 8px;
+                margin-bottom: 6px;
             }
             
             .map-overlay p {
                 font-size: 0.75rem;
-                margin-bottom: 6px;
+                margin-bottom: 5px;
             }
             
             .zone-info {
-                padding: 10px;
-                margin-top: 10px;
+                padding: 8px;
+                margin-top: 8px;
             }
             
             .zone-info h3 {
                 font-size: 0.9rem;
-                margin-bottom: 6px;
+                margin-bottom: 5px;
             }
             
             .zone-info li {
@@ -186,13 +145,15 @@
             }
         }
         
-        @media (max-width: 360px) {
+        @media (max-width: 480px) {
             .map-overlay {
                 top: 3px;
                 left: 3px;
                 right: 3px;
-                padding: 10px;
+                padding: 8px;
                 border-radius: 6px;
+                max-height: 50vh;
+                overflow-y: auto;
             }
             
             .back-button {
@@ -205,27 +166,72 @@
             
             .map-overlay h2 {
                 font-size: 0.9rem;
-                margin-bottom: 6px;
+                margin-bottom: 5px;
             }
             
             .map-overlay p {
                 font-size: 0.7rem;
-                margin-bottom: 5px;
+                margin-bottom: 4px;
             }
             
             .zone-info {
-                padding: 8px;
-                margin-top: 8px;
+                padding: 6px;
+                margin-top: 6px;
             }
             
             .zone-info h3 {
                 font-size: 0.8rem;
-                margin-bottom: 5px;
+                margin-bottom: 4px;
             }
             
             .zone-info li {
                 font-size: 0.65rem;
                 margin-bottom: 2px;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            .map-overlay {
+                top: 2px;
+                left: 2px;
+                right: 2px;
+                padding: 6px;
+                border-radius: 4px;
+                max-height: 40vh;
+                overflow-y: auto;
+            }
+            
+            .back-button {
+                top: 2px;
+                right: 2px;
+                padding: 4px 10px;
+                font-size: 0.7rem;
+                border-radius: 14px;
+            }
+            
+            .map-overlay h2 {
+                font-size: 0.8rem;
+                margin-bottom: 4px;
+            }
+            
+            .map-overlay p {
+                font-size: 0.65rem;
+                margin-bottom: 3px;
+            }
+            
+            .zone-info {
+                padding: 4px;
+                margin-top: 4px;
+            }
+            
+            .zone-info h3 {
+                font-size: 0.7rem;
+                margin-bottom: 3px;
+            }
+            
+            .zone-info li {
+                font-size: 0.6rem;
+                margin-bottom: 1px;
             }
         }
     </style>
