@@ -1246,10 +1246,10 @@ body {
 .quick-question {
     background: linear-gradient(145deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.05));
     color: var(--gold);
-    padding: 12px 16px;
-    border-radius: 12px;
+    padding: 8px 12px;
+    border-radius: 10px;
     cursor: pointer;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 500;
     text-align: center;
     border: 1px solid rgba(212, 175, 55, 0.2);
@@ -1286,8 +1286,8 @@ body {
 
 @media (max-width: 768px) {
     .chatbot-container {
-        bottom: 20px;
-        right: 20px;
+        bottom: 15px;
+        right: 15px;
     }
     
     .chatbot-window {
@@ -1295,7 +1295,7 @@ body {
         max-width: 450px;
         height: 70vh;
         bottom: 70px;
-        right: -20px;
+        right: -15px;
     }
     
     .chatbot-quick-questions {
@@ -1304,28 +1304,36 @@ body {
     }
     
     .quick-question {
-        padding: 12px 16px;
-        font-size: 0.9rem;
+        padding: 8px 12px;
+        font-size: 0.8rem;
     }
     
     .message-content {
-        font-size: 1.15rem;
-        padding: 17px 21px;
+        font-size: 1.1rem;
+        padding: 16px 20px;
         max-width: 88%;
+    }
+    
+    .chatbot-header {
+        padding: 15px;
+    }
+    
+    .chatbot-title {
+        font-size: 1rem;
     }
 }
 
 @media (max-width: 480px) {
     .chatbot-window {
-        width: 95vw;
-        height: 80vh;
-        right: -20px;
-        bottom: 80px;
+        width: 92vw;
+        height: 70vh;
+        right: -15px;
+        bottom: 70px;
     }
     
     .chatbot-toggle {
-        padding: 12px 16px;
-        font-size: 0.8rem;
+        padding: 8px 12px;
+        font-size: 0.7rem;
     }
     
     .chatbot-toggle .chatbot-label {
@@ -1333,14 +1341,27 @@ body {
     }
     
     .message-content {
-        font-size: 1.2rem;
-        padding: 18px 22px;
+        font-size: 1rem;
+        padding: 14px 18px;
         max-width: 90%;
     }
     
     .quick-question {
-        padding: 14px 18px;
-        font-size: 1rem;
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+    
+    .chatbot-header {
+        padding: 12px;
+    }
+    
+    .chatbot-title {
+        font-size: 0.9rem;
+    }
+    
+    .chatbot-quick-questions {
+        padding: 12px;
+        gap: 4px;
     }
 }
 
@@ -2111,5 +2132,43 @@ body {
 @media (max-width: 768px) {
     body {
         padding-top: 0;
+    }
+}
+
+@media (max-width: 360px) {
+    .chatbot-window {
+        width: 88vw;
+        height: 65vh;
+        right: -10px;
+        bottom: 65px;
+    }
+    
+    .chatbot-toggle {
+        padding: 6px 10px;
+        font-size: 0.65rem;
+    }
+    
+    .message-content {
+        font-size: 0.95rem;
+        padding: 12px 16px;
+        max-width: 92%;
+    }
+    
+    .quick-question {
+        padding: 4px 8px;
+        font-size: 0.75rem;
+    }
+    
+    .chatbot-header {
+        padding: 8px;
+    }
+    
+    .chatbot-title {
+        font-size: 0.8rem;
+    }
+    
+    .chatbot-quick-questions {
+        padding: 10px;
+        gap: 3px;
     }
 }
