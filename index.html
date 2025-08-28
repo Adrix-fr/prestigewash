@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A&D Prestige Wash - Le luxe de la propreté automobile</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <div class="logo">
+                    <span class="logo-text">A&D</span>
+                    <span class="logo-subtitle">Prestige Wash</span>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#accueil" class="nav-link">Accueil</a></li>
+                    <li><a href="#services" class="nav-link">Services</a></li>
+                    <li><a href="#avantages" class="nav-link">Avantages</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="accueil" class="hero">
+            <div class="hero-content">
+                <div class="logo-hero">
+                    <span class="logo-text-hero">A&D</span>
+                    <span class="logo-subtitle-hero">Prestige Wash</span>
+                </div>
+                <h1 class="hero-title">Le luxe de la propreté automobile</h1>
+                <p class="hero-subtitle">Votre véhicule mérite l'excellence</p>
+                <a href="#calendarSection" class="hero-cta">Prendre rendez-vous</a>
+            </div>
+            <div class="hero-image">
+                <div class="car-placeholder"></div>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2 class="section-title">Nos services haut de gamme</h2>
+                <div class="services-grid">
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3>Lavage extérieur haut de gamme</h3>
+                        <p>Nettoyage professionnel de l'extérieur de votre véhicule avec des produits premium</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-couch"></i>
+                        </div>
+                        <h3>Nettoyage intérieur complet</h3>
+                        <p>Restauration complète de l'intérieur pour un confort optimal</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h3>Traitement céramique & protections</h3>
+                        <p>Protection durable avec des revêtements céramiques de dernière génération</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3>Détail complet</h3>
+                        <p>Attention aux détails : jantes, sièges, vitres et finitions</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="avantages" class="advantages">
+            <div class="container">
+                <h2 class="section-title">Pourquoi choisir A&D Prestige Wash ?</h2>
+                <div class="advantages-grid">
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>Service professionnel et soigné</h3>
+                        <p>Une équipe expérimentée qui traite chaque véhicule avec le plus grand soin</p>
+                    </div>
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>Produits haut de gamme</h3>
+                        <p>Des produits respectueux de votre véhicule et de l'environnement</p>
+                    </div>
+                    <div class="advantage-item">
+                        <div class="advantage-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3>Flexibilité et efficacité</h3>
+                        <p>Sur rendez-vous, rapide et efficace pour s'adapter à votre planning</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="devis" class="devis-section">
+            <div class="container">
+                <div class="devis-content">
+                    <h2 class="section-title">Besoin d'un devis personnalisé ?</h2>
+                    <p class="devis-subtitle">Contactez-nous pour une estimation précise de nos services</p>
+                            <div class="devis-buttons">
+            <a href="https://forms.gle/68ncHCEjog9332nPA" target="_blank" class="devis-button">Demander un devis gratuit</a>
+            <a href="carte.html" target="_blank" class="devis-button map-button">
+                🗺️ Voir notre zone de service
+            </a>
+        </div>
+        
+        <div class="calendar-trigger">
+            <button class="calendar-trigger-btn" id="calendarTrigger">
+                <span class="trigger-icon">📅</span>
+                <span class="trigger-text">Prendre un Rendez-vous</span>
+                <span class="trigger-arrow">▼</span>
+            </button>
+        </div>
+        
+        <div class="calendar-section" id="calendarSection">
+            <div class="calendar-content">
+                <h2>📅 Prendre Rendez-vous</h2>
+                <p class="calendar-subtitle">Disponible uniquement l'après-midi et en soirée</p>
+                
+                <div class="calendar-container">
+                <div class="calendar-header">
+                    <button class="calendar-nav" id="prevMonth">‹</button>
+                    <h3 id="currentMonth">Août 2025</h3>
+                    <button class="calendar-nav" id="nextMonth">›</button>
+                </div>
+                
+                <div class="calendar-weekdays">
+                    <div>Lun</div>
+                    <div>Mar</div>
+                    <div>Mer</div>
+                    <div>Jeu</div>
+                    <div>Ven</div>
+                    <div>Sam</div>
+                    <div>Dim</div>
+                </div>
+                
+                <div class="calendar-days" id="calendarDays">
+                    <!-- Les jours seront générés par JavaScript -->
+                </div>
+                
+                <div class="time-slots">
+                    <h4>🕐 Créneaux Disponibles</h4>
+                    <div class="time-options">
+                        <div class="time-option" data-time="14:00">14:00 - 16:00</div>
+                        <div class="time-option" data-time="16:00">16:00 - 18:00</div>
+                        <div class="time-option" data-time="18:00">18:00 - 20:00</div>
+                    </div>
+                </div>
+                
+                <div class="booking-info">
+                    <p><strong>📞 Contact :</strong> 079.217.56.24</p>
+                    <p><strong>📍 Service :</strong> À domicile ou en entreprise</p>
+                    <p><strong>⏱️ Durée :</strong> 1-6h selon le service</p>
+                </div>
+                
+                <div class="confirm-booking">
+                    <button class="confirm-button" id="confirmBooking" disabled>
+                        📅 Confirmer le Rendez-vous
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="confirmation-popup" id="confirmationPopup">
+            <div class="popup-content">
+                <div class="popup-header">
+                    <h3>📅 Pré-réservation</h3>
+                    <button class="popup-close" id="popupClose">×</button>
+                </div>
+                
+                <div class="popup-body">
+                    <div class="booking-summary">
+                        <h4>📋 Résumé de votre réservation</h4>
+                        <div class="summary-item">
+                            <span class="summary-label">📅 Date :</span>
+                            <span class="summary-value" id="summaryDate">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">🕐 Heure :</span>
+                            <span class="summary-value" id="summaryTime">-</span>
+                        </div>
+                        <div class="summary-item">
+                            <span class="summary-label">📍 Service :</span>
+                            <span class="summary-value">À domicile ou en entreprise</span>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <h4>📞 Pour confirmer votre rendez-vous</h4>
+                        <div class="contact-methods">
+                            <div class="contact-method">
+                                <strong>📱 WhatsApp :</strong>
+                                <a href="https://wa.me/41792175624" target="_blank" class="whatsapp-link">
+                                    079.217.56.24
+                                </a>
+                            </div>
+                            <div class="contact-method">
+                                <strong>📞 Téléphone :</strong>
+                                <a href="tel:079.217.56.24" class="phone-link">
+                                    079.217.56.24
+                                </a>
+                            </div>
+                        </div>
+                        <p class="confirmation-note">
+                            <strong>Note :</strong> Ceci est une pré-réservation. Veuillez nous contacter pour confirmer définitivement votre rendez-vous.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <span class="logo-text">A&D</span>
+                        <span class="logo-subtitle">Prestige Wash</span>
+                    </div>
+                    <p class="footer-slogan">Le luxe de la propreté automobile</p>
+                </div>
+                <div class="footer-menu">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#accueil">Accueil</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#avantages">Avantages</a></li>
+                    </ul>
+                </div>
+                <div class="footer-legal">
+                    <p>&copy; 2025 A&D Prestige Wash. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="chatbot-container">
+        <div class="chatbot-toggle" id="chatbotToggle">
+            <i class="fas fa-comments"></i>
+            <span class="chatbot-label">Besoin d'aide ?</span>
+        </div>
+        
+        <div class="chatbot-window" id="chatbotWindow">
+            <div class="chatbot-header">
+                <div class="chatbot-title">
+                    <i class="fas fa-robot"></i>
+                    <span>A&D Prestige Wash</span>
+                </div>
+                <button class="chatbot-close" id="chatbotClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot-message">
+                    <div class="message-content">
+                        Bonjour ! 👋 Je suis l'assistant virtuel d'A&D Prestige Wash. Comment puis-je vous aider aujourd'hui ?
+                    </div>
+                </div>
+            </div>
+            
+            <div class="chatbot-quick-questions">
+                <div class="quick-question" data-question="tarifs">💰 Tarifs</div>
+                <div class="quick-question" data-question="zone">📍 Zone de service</div>
+                <div class="quick-question" data-question="options">🚗 Options de service</div>
+                <div class="quick-question" data-question="duree">⏱️ Durée des services</div>
+                <div class="quick-question" data-question="produits">🧴 Produits utilisés</div>
+                <div class="quick-question" data-question="rdv">📅 Prise de rendez-vous</div>
+                <div class="quick-question" data-question="offres">🎁 Offres spéciales</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

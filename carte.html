@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zone de Service - A&D Prestige Wash</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .map-container {
+            height: 100vh;
+            width: 100%;
+            position: relative;
+        }
+        
+        #map {
+            height: 100%;
+            width: 100%;
+            z-index: 1;
+        }
+        
+        .map-overlay {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            border: 2px solid var(--gold);
+            border-radius: 15px;
+            padding: 20px;
+            color: var(--white);
+            z-index: 1000;
+            max-width: 300px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .map-overlay h2 {
+            color: var(--gold);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+        
+        .map-overlay p {
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        .back-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .back-button:hover {
+            background: var(--black);
+            color: var(--gold);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
+        }
+        
+        .zone-info {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .zone-info h3 {
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .zone-info ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .zone-info li {
+            margin-bottom: 5px;
+            font-size: 0.85rem;
+            color: var(--light-gray);
+        }
+        
+        .zone-info li:before {
+            content: "📍 ";
+            color: var(--gold);
+        }
+        
+        @media (max-width: 768px) {
+            .map-overlay {
+                top: 10px;
+                left: 10px;
+                right: 10px;
+                max-width: none;
+                padding: 15px;
+            }
+            
+            .back-button {
+                top: 10px;
+                right: 10px;
+                padding: 10px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .map-overlay h2 {
+                font-size: 1.1rem;
+                margin-bottom: 12px;
+            }
+            
+            .map-overlay p {
+                font-size: 0.8rem;
+                margin-bottom: 8px;
+            }
+            
+            .zone-info {
+                padding: 12px;
+                margin-top: 12px;
+            }
+            
+            .zone-info h3 {
+                font-size: 1rem;
+                margin-bottom: 8px;
+            }
+            
+            .zone-info li {
+                font-size: 0.75rem;
+                margin-bottom: 4px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .map-overlay {
+                top: 5px;
+                left: 5px;
+                right: 5px;
+                padding: 12px;
+            }
+            
+            .back-button {
+                top: 5px;
+                right: 5px;
+                padding: 8px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .map-overlay h2 {
+                font-size: 1rem;
+                margin-bottom: 10px;
+            }
+            
+            .map-overlay p {
+                font-size: 0.75rem;
+                margin-bottom: 6px;
+            }
+            
+            .zone-info {
+                padding: 10px;
+                margin-top: 10px;
+            }
+            
+            .zone-info h3 {
+                font-size: 0.9rem;
+                margin-bottom: 6px;
+            }
+            
+            .zone-info li {
+                font-size: 0.7rem;
+                margin-bottom: 3px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="map-container">
+        <div id="map"></div>
+        
+        <div class="map-overlay">
+            <h2>🗺️ Notre Zone de Service</h2>
+            <p>Nous intervenons dans le Valais central pour vous offrir un service de qualité exceptionnelle.</p>
+            
+            <div class="zone-info">
+                <h3>📍 Zone d'intervention</h3>
+                <ul>
+                    <li><strong>Ouest :</strong> Martigny</li>
+                    <li><strong>Centre :</strong> Ardon (siège)</li>
+                    <li><strong>Est :</strong> Sion</li>
+                    <li><strong>Villes incluses :</strong> Fully, Charrat, Saxon, Saillon, Leytron, Chamoson, Vétroz, Conthey, Aproz, Sion</li>
+                </ul>
+            </div>
+            
+            <div class="zone-info">
+                <h3>🚗 Options de service</h3>
+                <ul>
+                    <li>Service à domicile</li>
+                    <li>Service en entreprise</li>
+                </ul>
+            </div>
+        </div>
+        
+        <a href="index.html" class="back-button">← Retour au site</a>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const map = L.map('map', {
+            dragging: false,
+            touchZoom: true,
+            scrollWheelZoom: true,
+            doubleClickZoom: true,
+            boxZoom: false,
+            keyboard: false,
+            tap: false
+        }).setView([46.157, 7.167], 10, {animate: false});
+        
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors',
+            maxZoom: 18,
+            updateWhenIdle: true,
+            updateWhenZooming: false,
+            keepBuffer: 2
+        }).addTo(map);
+        
+        const serviceZone = [
+            [46.0867329233745, 7.056985187908726], // Martigny
+            [46.10368241525553, 7.101607460382843], // Point 1
+            [46.12059153961082, 7.136916483741075], // Point 2
+            [46.145535735916546, 7.185861430335854], // Point 3
+            [46.2053401103409, 7.321579264408166], // Aproz
+            [46.237096941188895, 7.388656387294295], // Sion
+            [46.2337129219969, 7.310636310280057], // Point intermédiaire 1
+            [46.2284880549836, 7.279951841349527], // Point intermédiaire 2
+            [46.20952506062631, 7.257702524555772], // Ardon (siège)
+            [46.202396978945735, 7.223713572989744], // Chamoson
+            [46.18611772589545, 7.206375774188231], // Leytron
+            [46.17161681357961, 7.185261426336733], // Saillon
+            [46.13832157016835, 7.116768539713774], // Fully
+            [46.11315512604066, 7.065385633362566], // Point entre Fully et Martigny
+            [46.0867329233745, 7.056985187908726]  // Retour à Martigny
+        ];
+        
+        let zonePolygon = L.polygon(serviceZone, {
+            color: '#FF6B6B',
+            weight: 4,
+            fillColor: '#FF6B6B',
+            fillOpacity: 0.3,
+            smoothFactor: 1,
+            noClip: true
+        }).addTo(map);
+        
+        function redrawPolygon() {
+            map.removeLayer(zonePolygon);
+            zonePolygon = L.polygon(serviceZone, {
+                color: '#FF6B6B',
+                weight: 4,
+                fillColor: '#FF6B6B',
+                fillOpacity: 0.3,
+                smoothFactor: 1,
+                noClip: true
+            }).addTo(map);
+        }
+        
+        const ardonMarker = L.marker([46.20952506062631, 7.257702524555772]).addTo(map);
+        ardonMarker.bindPopup("<b>🏢 A&D Prestige Wash</b><br>Siège de l'entreprise<br>Service sur place disponible");
+        
+        const martignyMarker = L.marker([46.10518357449539, 7.0747614082841555]).addTo(map);
+        martignyMarker.bindPopup("<b>📍 Martigny</b><br>Limite ouest de notre zone");
+        
+        const fullyMarker = L.marker([46.138623642942676, 7.11682641457568]).addTo(map);
+        fullyMarker.bindPopup("<b>📍 Fully</b><br>Zone de service");
+        
+        const saillonMarker = L.marker([46.1708979199254, 7.186532512564311]).addTo(map);
+        saillonMarker.bindPopup("<b>📍 Saillon</b><br>Zone de service");
+        
+        const leytronMarker = L.marker([46.186706310255246, 7.209964288838534]).addTo(map);
+        leytronMarker.bindPopup("<b>📍 Leytron</b><br>Zone de service");
+        
+        const charratMarker = L.marker([46.12303778895977, 7.132281872130541]).addTo(map);
+        charratMarker.bindPopup("<b>📍 Charrat</b><br>Zone de service");
+        
+        const saxonMarker = L.marker([46.15146680564384, 7.179317086043633]).addTo(map);
+        saxonMarker.bindPopup("<b>📍 Saxon</b><br>Zone de service");
+        
+        const riddesMarker = L.marker([46.1736117343093, 7.223179984759838]).addTo(map);
+        riddesMarker.bindPopup("<b>📍 Riddes</b><br>Zone de service");
+        
+        const sionMarker = L.marker([46.233030155128525, 7.3599031219335505]).addTo(map);
+        sionMarker.bindPopup("<b>📍 Sion</b><br>Zone de service");
+        
+        const vétrozMarker = L.marker([46.22638015533322, 7.279737264643719]).addTo(map);
+        vétrozMarker.bindPopup("<b>📍 Vétroz</b><br>Zone de service");
+        
+        const contheyMarker = L.marker([46.22543008959165, 7.303769855694205]).addTo(map);
+        contheyMarker.bindPopup("<b>📍 Conthey</b><br>Zone de service");
+        
+        const chamosonMarker = L.marker([46.20163364520508, 7.223313312883574]).addTo(map);
+        chamosonMarker.bindPopup("<b>📍 Chamoson</b><br>Zone de service");
+        
+        const aprozMarker = L.marker([46.2053401103409, 7.321579264408166]).addTo(map);
+        aprozMarker.bindPopup("<b>📍 Aproz</b><br>Zone de service");
+        
+        map.fitBounds(zonePolygon.getBounds(), { 
+            padding: [20, 20],
+            maxZoom: 14,
+            animate: false
+        });
+        
+        map.setMaxBounds(zonePolygon.getBounds().pad(0.1));
+        map.on('drag', function() {
+            map.panInsideBounds(zonePolygon.getBounds().pad(0.1));
+        });
+        
+        map.on('click', function(e) {
+            const clickedPoint = e.latlng;
+            const isInsideZone = zonePolygon.getBounds().contains(clickedPoint);
+            
+            if (!isInsideZone) {
+                L.popup()
+                    .setLatLng(clickedPoint)
+                    .setContent('<div style="text-align: center;"><b>🚫 Zone non couverte</b><br><br>Nous ne proposons pas de service dans cette région.<br><br>Notre zone d\'intervention s\'étend de Martigny à Sion.</div>')
+                    .openOn(map);
+            }
+        });
+        
+        map.invalidateSize();
+        redrawPolygon();
+        
+        const customIcon = L.divIcon({
+            className: 'custom-marker',
+            html: '🚗',
+            iconSize: [30, 30],
+            iconAnchor: [15, 15]
+        });
+        
+        ardonMarker.setIcon(customIcon);
+    </script>
+</body>
+</html>
