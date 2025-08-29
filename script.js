@@ -491,4 +491,198 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     renderCalendar();
+
+    // ===== CARROUSEL DES AVIS CLIENTS =====
+    function initTestimonialsCarousel() {
+        const carousel = document.getElementById('testimonialsCarousel');
+        const prevBtn = document.getElementById('prevTestimonial');
+        const nextBtn = document.getElementById('nextTestimonial');
+        const dotsContainer = document.getElementById('carouselDots');
+        
+        if (!carousel) return;
+        
+        let currentIndex = 0;
+        let autoScrollInterval;
+        
+        // Fonction pour créer un avis
+        function createTestimonialCard(testimonial) {
+            const card = document.createElement('div');
+            card.className = 'testimonial-card';
+            card.innerHTML = `
+                <div class="testimonial-photo">
+                    <img src="${testimonial.photo}" alt="Photo client" loading="lazy">
+                </div>
+                <div class="testimonial-content">
+                    <div class="testimonial-rating">
+                        ${'<i class="fas fa-star"></i>'.repeat(testimonial.rating)}
+                    </div>
+                    <p class="testimonial-text">"${testimonial.text}"</p>
+                    <h4 class="testimonial-author">- ${testimonial.author}</h4>
+                </div>
+            `;
+            return card;
+        }
+        
+        // Fonction pour afficher un avis spécifique
+        function showTestimonial(index) {
+            // Masquer tous les avis
+            const cards = carousel.querySelectorAll('.testimonial-card');
+            cards.forEach(card => {
+                card.classList.remove('active');
+            });
+            
+            // Afficher l'avis actuel
+            if (cards[index]) {
+                cards[index].classList.add('active');
+            }
+            
+            currentIndex = index;
+            updateDots();
+            updateNavigation();
+        }
+        
+        // Créer les points de navigation
+        function createDots() {
+            dotsContainer.innerHTML = '';
+            const totalTestimonials = carousel.querySelectorAll('.testimonial-card').length;
+            
+            for (let i = 0; i < totalTestimonials; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'carousel-dot';
+                if (i === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+        }
+        
+        // Aller à un slide spécifique
+        function goToSlide(index) {
+            showTestimonial(index);
+            resetAutoScroll();
+        }
+        
+        // Mettre à jour les points actifs
+        function updateDots() {
+            const dots = dotsContainer.querySelectorAll('.carousel-dot');
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+        
+        // Slide suivant
+        function nextSlide() {
+            const totalTestimonials = carousel.querySelectorAll('.testimonial-card').length;
+            if (totalTestimonials === 0) return;
+            
+            const nextIndex = (currentIndex + 1) % totalTestimonials;
+            showTestimonial(nextIndex);
+            resetAutoScroll();
+        }
+        
+        // Slide précédent
+        function prevSlide() {
+            const totalTestimonials = carousel.querySelectorAll('.testimonial-card').length;
+            if (totalTestimonials === 0) return;
+            
+            const prevIndex = (currentIndex - 1 + totalTestimonials) % totalTestimonials;
+            showTestimonial(prevIndex);
+            resetAutoScroll();
+        }
+        
+        // Démarrer l'auto-scroll
+        function startAutoScroll() {
+            const totalTestimonials = carousel.querySelectorAll('.testimonial-card').length;
+            if (totalTestimonials > 1) {
+                autoScrollInterval = setInterval(nextSlide, 4000);
+            }
+        }
+        
+        // Réinitialiser l'auto-scroll
+        function resetAutoScroll() {
+            if (autoScrollInterval) {
+                clearInterval(autoScrollInterval);
+                startAutoScroll();
+            }
+        }
+        
+        // Événements des boutons
+        if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+        if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+        
+        // Navigation au clavier
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
+        
+        // Touch/swipe pour mobile
+        let startX = 0;
+        let endX = 0;
+        
+        carousel.addEventListener('touchstart', (e) => {
+            startX = e.touches[0].clientX;
+        });
+        
+        carousel.addEventListener('touchend', (e) => {
+            endX = e.changedTouches[0].clientX;
+            const diff = startX - endX;
+            
+            if (Math.abs(diff) > 50) {
+                if (diff > 0) {
+                    nextSlide();
+                } else {
+                    prevSlide();
+                }
+            }
+        });
+        
+        // Mettre à jour la navigation
+        function updateNavigation() {
+            const totalTestimonials = carousel.querySelectorAll('.testimonial-card').length;
+            if (prevBtn) prevBtn.disabled = totalTestimonials === 0 || currentIndex === 0;
+            if (nextBtn) nextBtn.disabled = totalTestimonials === 0 || currentIndex === totalTestimonials - 1;
+        }
+        
+        // Observer les changements
+        const observer = new MutationObserver(() => {
+            const newTotal = carousel.querySelectorAll('.testimonial-card').length;
+            if (newTotal > 0) {
+                createDots();
+                updateNavigation();
+                if (newTotal > 1) {
+                    startAutoScroll();
+                } else {
+                    if (autoScrollInterval) {
+                        clearInterval(autoScrollInterval);
+                    }
+                }
+            }
+        });
+        
+        observer.observe(carousel, { childList: true, subtree: true });
+        
+        // Initialisation
+        createDots();
+        updateNavigation();
+        
+        // Afficher le premier avis au chargement s'il y en a
+        const initialTestimonials = carousel.querySelectorAll('.testimonial-card');
+        if (initialTestimonials.length > 0) {
+            showTestimonial(0);
+        }
+        
+        // Fonction pour ajouter un avis (à utiliser plus tard)
+        window.addTestimonial = function(testimonial) {
+            const card = createTestimonialCard(testimonial);
+            carousel.appendChild(card);
+            
+            // Si c'est le premier avis, l'afficher
+            if (carousel.querySelectorAll('.testimonial-card').length === 1) {
+                showTestimonial(0);
+            }
+        };
+    }
+
+    // Initialiser le carrousel au chargement
+    initTestimonialsCarousel();
 });
