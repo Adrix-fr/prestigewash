@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Devis Gratuit - A&D Prestige Wash</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <span class="logo-text">A&D</span>
+                <span class="logo-subtitle">Prestige Wash</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="index.html#services" class="nav-link">Services</a></li>
+                <li><a href="index.html#avantages" class="nav-link">Avantages</a></li>
+                <li><a href="index.html#avis" class="nav-link">Avis Clients</a></li>
+                <li><a href="carte.html" class="nav-link">Zone de Service</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="devis-hero">
+            <div class="container">
+                <div class="devis-hero-content">
+                    <h1>📋 Devis Gratuit</h1>
+                    <p class="devis-hero-subtitle">Obtenez une estimation précise de nos services de lavage automobile</p>
+                    <div class="devis-hero-info">
+                        <div class="info-item">
+                            <i class="fas fa-calculator"></i>
+                            <span>Calcul automatique des prix</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-clock"></i>
+                            <span>Réponse en 24h</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>100% gratuit</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Devis Form Section -->
+        <section class="devis-form-section">
+            <div class="container">
+                <div class="devis-form-container">
+                    <div class="form-header">
+                        <h2>🏆 Demande de Devis</h2>
+                        <p>Remplissez le formulaire ci-dessous pour recevoir votre devis personnalisé</p>
+                    </div>
+
+                    <form id="devisForm" class="devis-form">
+                        <!-- Informations personnelles -->
+                        <div class="form-section">
+                            <h3>👤 Informations personnelles</h3>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="nom">Nom et prénom *</label>
+                                    <input type="text" id="nom" name="nom" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="telephone">Numéro de téléphone *</label>
+                                    <input type="tel" id="telephone" name="telephone" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">E-mail *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                        </div>
+
+                        <!-- Type de véhicule -->
+                        <div class="form-section">
+                            <h3>🚘 Type de véhicule</h3>
+                            <div class="vehicle-options">
+                                <label class="vehicle-option">
+                                    <input type="radio" name="vehicule" value="citadine" required>
+                                    <div class="option-content">
+                                        <span class="option-title">Citadine</span>
+                                        <span class="option-price">À partir de 40.-</span>
+                                    </div>
+                                </label>
+                                <label class="vehicle-option">
+                                    <input type="radio" name="vehicule" value="berline">
+                                    <div class="option-content">
+                                        <span class="option-title">Berline</span>
+                                        <span class="option-price">À partir de 45.-</span>
+                                    </div>
+                                </label>
+                                <label class="vehicle-option">
+                                    <input type="radio" name="vehicule" value="suv">
+                                    <div class="option-content">
+                                        <span class="option-title">SUV / 4x4</span>
+                                        <span class="option-price">À partir de 55.-</span>
+                                    </div>
+                                </label>
+                                <label class="vehicle-option">
+                                    <input type="radio" name="vehicule" value="utilitaire">
+                                    <div class="option-content">
+                                        <span class="option-title">Utilitaire</span>
+                                        <span class="option-price">Sur devis</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Prestations souhaitées -->
+                        <div class="form-section">
+                            <h3>🧽 Prestations souhaitées</h3>
+                            <div class="services-grid">
+                                <label class="service-option">
+                                    <input type="checkbox" name="services" value="lavage_exterieur">
+                                    <div class="service-content">
+                                        <span class="service-title">Lavage extérieur haut de gamme</span>
+                                        <span class="service-price" data-citadine="40" data-berline="45" data-suv="55">40.-</span>
+                                    </div>
+                                </label>
+                                <label class="service-option">
+                                    <input type="checkbox" name="services" value="nettoyage_interieur">
+                                    <div class="service-content">
+                                        <span class="service-title">Nettoyage intérieur complet</span>
+                                        <span class="service-price" data-citadine="40" data-berline="45" data-suv="55">40.-</span>
+                                    </div>
+                                </label>
+                                <label class="service-option">
+                                    <input type="checkbox" name="services" value="traitement_ceramique">
+                                    <div class="service-content">
+                                        <span class="service-title">Traitement céramique & protections</span>
+                                        <span class="service-price" data-citadine="40" data-berline="45" data-suv="55">40.-</span>
+                                        <span class="service-note">Seulement 10.- en supplément si nettoyage inclus</span>
+                                    </div>
+                                </label>
+                                <label class="service-option">
+                                    <input type="checkbox" name="services" value="detail_complet">
+                                    <div class="service-content">
+                                        <span class="service-title">Détail complet (jantes, sièges, vitres...)</span>
+                                        <span class="service-price" data-citadine="20" data-berline="25" data-suv="30">20.-</span>
+                                        <span class="service-note">Seulement 10.- en supplément si nettoyage inclus</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Lieu souhaité -->
+                        <div class="form-section">
+                            <h3>📍 Lieu souhaité</h3>
+                            <div class="location-options">
+                                <label class="location-option">
+                                    <input type="radio" name="lieu" value="sur_place" required>
+                                    <div class="option-content">
+                                        <i class="fas fa-building"></i>
+                                        <span>Sur place chez A&D Prestige Wash (Ardon)</span>
+                                    </div>
+                                </label>
+                                <label class="location-option">
+                                    <input type="radio" name="lieu" value="domicile">
+                                    <div class="option-content">
+                                        <i class="fas fa-home"></i>
+                                        <span>Service à domicile</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="form-group" id="adresseGroup" style="display: none;">
+                                <label for="adresse">Votre adresse complète</label>
+                                <textarea id="adresse" name="adresse" rows="3" placeholder="Rue, numéro, ville, code postal"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Disponibilités -->
+                        <div class="form-section">
+                            <h3>🗓️ Disponibilités pour le rendez-vous</h3>
+                            <div class="form-group">
+                                <label for="disponibilites">Précisez vos disponibilités *</label>
+                                <textarea id="disponibilites" name="disponibilites" rows="3" required placeholder="Ex: Mardi après-midi, mercredi soir, weekend..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Remarques -->
+                        <div class="form-section">
+                            <h3>💬 Remarques supplémentaires</h3>
+                            <div class="form-group">
+                                <label for="remarques">Informations complémentaires</label>
+                                <textarea id="remarques" name="remarques" rows="3" placeholder="État du véhicule, demandes spéciales, questions..."></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Résumé et prix -->
+                        <div class="form-section price-summary">
+                            <h3>💰 Résumé de votre devis</h3>
+                            <div class="price-breakdown">
+                                <div class="price-item">
+                                    <span>Services sélectionnés :</span>
+                                    <span id="servicesList">Aucun service sélectionné</span>
+                                </div>
+                                <div class="price-item total">
+                                    <span>Prix estimé :</span>
+                                    <span id="totalPrice">0.- CHF</span>
+                                </div>
+                            </div>
+                            <div class="price-note">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Prix indicatif. Le devis final sera établi après inspection du véhicule.</span>
+                            </div>
+                        </div>
+
+                        <!-- Submit -->
+                        <div class="form-submit">
+                            <button type="submit" class="submit-btn" id="submitBtn">
+                                <i class="fas fa-paper-plane"></i>
+                                Envoyer ma demande de devis
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Info -->
+        <section class="contact-info-section">
+            <div class="container">
+                <div class="contact-info">
+                    <h3>📞 Besoin d'aide ?</h3>
+                    <div class="contact-methods">
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Téléphone :</strong>
+                                <a href="tel:079.217.56.24">079.217.56.24</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Téléphone :</strong>
+                                <a href="tel:079.261.23.87">079.261.23.87</a>
+                            </div>
+                        </div>
+                        <div class="contact-method">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>E-mail :</strong>
+                                <a href="mailto:prestigewash.contact@gmail.com">prestigewash.contact@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <div class="logo">
+                        <span class="logo-text">A&D</span>
+                        <span class="logo-subtitle">Prestige Wash</span>
+                    </div>
+                    <p class="footer-slogan">Le luxe de la propreté automobile</p>
+                </div>
+                <div class="footer-menu">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="index.html">Accueil</a></li>
+                        <li><a href="index.html#services">Services</a></li>
+                        <li><a href="index.html#avantages">Avantages</a></li>
+                        <li><a href="index.html#avis">Avis Clients</a></li>
+                        <li><a href="carte.html">Zone de Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <p><i class="fas fa-phone"></i> 079.217.56.24</p>
+                    <p><i class="fas fa-phone"></i> 079.261.23.87</p>
+                    <p><i class="fas fa-envelope"></i> prestigewash.contact@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-legal">
+                <p>&copy; 2025 A&D Prestige Wash. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>✅ Devis envoyé avec succès !</h3>
+                <button class="modal-close" id="modalClose">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p>Votre demande de devis a été envoyée avec succès. Nous vous répondrons dans les 24h.</p>
+                <div class="modal-actions">
+                    <a href="index.html" class="btn-primary">Retour à l'accueil</a>
+                    <a href="carte.html" class="btn-secondary">Voir notre zone de service</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="devis.js"></script>
+</body>
+</html>

@@ -2556,3 +2556,657 @@ body {
     opacity: 1;
     display: block;
 }
+
+/* ===== PAGE DEVIS ===== */
+.devis-hero {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(33, 33, 33, 0.9) 100%);
+    padding: 120px 0 80px 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.devis-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="stars" patternUnits="userSpaceOnUse" width="100" height="100"><circle cx="20" cy="20" r="1" fill="%23D4AF37" opacity="0.3"/><circle cx="80" cy="40" r="0.5" fill="%23D4AF37" opacity="0.2"/><circle cx="40" cy="80" r="0.8" fill="%23D4AF37" opacity="0.25"/></pattern></defs><rect width="100" height="100" fill="url(%23stars)"/></svg>');
+    opacity: 0.1;
+    z-index: 1;
+}
+
+.devis-hero-content {
+    position: relative;
+    z-index: 2;
+}
+
+.devis-hero h1 {
+    font-size: 3.5rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+.devis-hero-subtitle {
+    font-size: 1.3rem;
+    color: var(--white);
+    margin-bottom: 3rem;
+    font-weight: 300;
+}
+
+.devis-hero-info {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--white);
+    font-size: 1.1rem;
+}
+
+.info-item i {
+    color: var(--gold);
+    font-size: 1.5rem;
+}
+
+/* Section formulaire */
+.devis-form-section {
+    padding: 80px 0;
+    background: var(--black);
+}
+
+.devis-form-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.form-header h2 {
+    font-size: 2.5rem;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.form-header p {
+    font-size: 1.1rem;
+    color: var(--light-gray);
+}
+
+/* Sections du formulaire */
+.form-section {
+    background: linear-gradient(145deg, #1a1a1a, #000000);
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    border: 1px solid rgba(212, 175, 55, 0.1);
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.6s ease forwards;
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.form-section:hover {
+    border-color: rgba(212, 175, 55, 0.3);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.1);
+}
+
+.form-section h3 {
+    color: var(--gold);
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+/* Grille des champs */
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid rgba(212, 175, 55, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--white);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Options véhicule */
+.vehicle-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.vehicle-option {
+    display: block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.vehicle-option input[type="radio"] {
+    display: none;
+}
+
+.option-content {
+    background: linear-gradient(145deg, #1a1a1a, #000000);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid rgba(212, 175, 55, 0.1);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.vehicle-option input[type="radio"]:checked + .option-content {
+    border-color: var(--gold);
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+    transform: translateY(-5px);
+}
+
+.option-title {
+    display: block;
+    color: var(--white);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.option-price {
+    display: block;
+    color: var(--gold);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* Grille des services */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+}
+
+.service-option {
+    display: block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.service-option input[type="checkbox"] {
+    display: none;
+}
+
+.service-content {
+    background: linear-gradient(145deg, #1a1a1a, #000000);
+    padding: 1.5rem;
+    border-radius: 12px;
+    border: 2px solid rgba(212, 175, 55, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.service-option input[type="checkbox"]:checked + .service-content {
+    border-color: var(--gold);
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+}
+
+.service-title {
+    display: block;
+    color: var(--white);
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.service-price {
+    display: block;
+    color: var(--gold);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.service-note {
+    display: block;
+    color: var(--light-gray);
+    font-size: 0.9rem;
+    font-style: italic;
+}
+
+/* Options lieu */
+.location-options {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1rem;
+}
+
+.location-option {
+    display: block;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.location-option input[type="radio"] {
+    display: none;
+}
+
+.location-option .option-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: left;
+}
+
+.location-option i {
+    color: var(--gold);
+    font-size: 1.5rem;
+}
+
+/* Résumé des prix */
+.price-summary {
+    background: linear-gradient(145deg, #2a2a2a, #1a1a1a);
+    border-color: var(--gold);
+}
+
+.price-breakdown {
+    margin-bottom: 1.5rem;
+}
+
+.price-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.price-item.total {
+    border-bottom: none;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--gold);
+}
+
+.price-note {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--light-gray);
+    font-size: 0.9rem;
+    padding: 1rem;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 8px;
+}
+
+.price-note i {
+    color: var(--gold);
+}
+
+/* Bouton submit */
+.form-submit {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.submit-btn {
+    background: linear-gradient(135deg, var(--gold), var(--dark-gold));
+    color: var(--black);
+    border: none;
+    padding: 16px 32px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+}
+
+.submit-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Section contact */
+.contact-info-section {
+    padding: 60px 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(33, 33, 33, 0.95) 100%);
+}
+
+.contact-info h3 {
+    text-align: center;
+    color: var(--gold);
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    font-family: 'Playfair Display', serif;
+}
+
+.contact-methods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.contact-method i {
+    color: var(--gold);
+    font-size: 1.5rem;
+}
+
+.contact-method a {
+    color: var(--white);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contact-method a:hover {
+    color: var(--gold);
+}
+
+/* Modale de succès */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: var(--black);
+    border-radius: 15px;
+    max-width: 500px;
+    width: 90%;
+    border: 2px solid var(--gold);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.modal-header h3 {
+    color: var(--gold);
+    margin: 0;
+}
+
+.modal-close {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 2rem;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--gold);
+}
+
+.modal-body {
+    padding: 2rem;
+    text-align: center;
+}
+
+.modal-body p {
+    color: var(--white);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-primary,
+.btn-secondary {
+    padding: 12px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.btn-primary {
+    background: var(--gold);
+    color: var(--black);
+}
+
+.btn-primary:hover {
+    background: var(--dark-gold);
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid var(--gold);
+}
+
+.btn-secondary:hover {
+    background: var(--gold);
+    color: var(--black);
+}
+
+/* Notifications */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: var(--black);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    color: var(--white);
+    z-index: 10001;
+    transform: translateX(400px);
+    transition: transform 0.3s ease;
+    max-width: 350px;
+}
+
+.notification.show {
+    transform: translateX(0);
+}
+
+.notification.error {
+    border-color: #e74c3c;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.notification i {
+    color: var(--gold);
+}
+
+.notification.error i {
+    color: #e74c3c;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .devis-hero h1 {
+        font-size: 2.5rem;
+    }
+    
+    .devis-hero-subtitle {
+        font-size: 1.1rem;
+    }
+    
+    .devis-hero-info {
+        gap: 2rem;
+    }
+    
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .vehicle-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .location-options {
+        grid-template-columns: 1fr;
+    }
+    
+    .modal-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        max-width: 200px;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .devis-hero {
+        padding: 100px 0 60px 0;
+    }
+    
+    .devis-hero h1 {
+        font-size: 2rem;
+    }
+    
+    .devis-hero-info {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+    
+    .form-section {
+        padding: 1.5rem;
+    }
+    
+    .form-header h2 {
+        font-size: 2rem;
+    }
+    
+    .submit-btn {
+        padding: 14px 28px;
+        font-size: 1.1rem;
+    }
+    
+    .notification {
+        right: 10px;
+        left: 10px;
+        max-width: none;
+    }
+}
+
+/* États d'erreur */
+.form-group.error input,
+.form-group.error textarea {
+    border-color: #e74c3c;
+    box-shadow: 0 0 10px rgba(231, 76, 60, 0.3);
+}
+
+.vehicle-options.error,
+.services-grid.error {
+    border: 2px solid #e74c3c;
+    border-radius: 8px;
+    padding: 1rem;
+}
